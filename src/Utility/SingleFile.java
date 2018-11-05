@@ -36,11 +36,14 @@ public class SingleFile extends AbstractFileManager {
 	public void EndWriting() throws IOException {
 		wc.flush();
 		wp.flush();
+		wc.close();
+		wp.close();
 	}
 
 	@Override
 	public void SortConsumer(String s) throws IOException {
 		int counter = 0;
+		fileCounter = 0;
 		int size = 0;
 		BufferedReader reader = new BufferedReader(new FileReader(c), B);
 		BufferedWriter writer = new BufferedWriter(new FileWriter(c + counter), B);
@@ -73,6 +76,7 @@ public class SingleFile extends AbstractFileManager {
 	@Override
 	public void SortProduct(String s) throws IOException {
 		int counter = 0;
+		fileCounter = 0;
 		int size = 0;
 		BufferedReader reader = new BufferedReader(new FileReader(p), B);
 		BufferedWriter writer = new BufferedWriter(new FileWriter(p + counter), B);
